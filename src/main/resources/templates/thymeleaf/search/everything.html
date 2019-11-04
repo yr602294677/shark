@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>睁眼看世界</title>
+  <link href="/css/search/everything.css" rel="stylesheet" />
+  <script src="/js/search/everything.js"></script>
+  <link rel="stylesheet" th:href="@{/css/book.css}" href="/css/book.css">
+
+</head>
+<body>
+<div class="mainContext">
+  <!--左侧内容-->
+  <div class="leftContext">
+    万物即可查
+    <p>  <a href="details.html" th:href="@{http://www.qisuiyi.top}">杨锐|blog</a> </p>
+    <p>  <a href="details.html" th:href="@{/book/showBook}">书籍详情</a> </p>
+    <p>  <a href="details.html" th:href="@{/book/addBook}">录入书籍</a> </p>
+    <p>  <a href="details.html" th:href="@{/search/showEverything}">查询万物</a> </p>
+  </div>
+  <!--右侧内容-->
+  <div class="rightContext">
+    <div>
+      <h3 style="text-align:left">万物皆可查</h3>
+      <form action="/search/serarchEverything" id="serarchEverything">
+        <label>请输入查询的内容</label><br>
+        <input type="text" name="para"><br><br>
+        <input type="submit" value="查询" style="background-color: #aaaaaa;color: white;">
+      </form>
+    </div>
+    <br>
+    <th>查询结果：</th>
+    <div>
+      <table width="600px" border="1" >
+        <col align="left"  width="15%"  />
+        <col align="left"  width="65%" />
+        <tr>
+          <th>key</th>
+          <th>value</th>
+        </tr>
+        <tr th:each="map : ${map}">
+          <td><sapn  th:text="${map.key}" ></sapn></td>
+          <td><sapn  th:text="${map.value}" ></sapn></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

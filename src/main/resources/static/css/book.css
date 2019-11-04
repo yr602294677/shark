@@ -1,0 +1,28 @@
+body{
+  background-image: url('/images/home.png');
+}
+.leftContext
+{
+  background-color: darkseagreen;
+  border-style: groove double;
+  padding-top: 1cm;
+  margin-left: 1cm;
+  float: left;
+  width: 15%;
+  height: 1000px;
+}
+.rightContext
+{
+  border-style: groove double;
+  background-color: darkseagreen;
+  /*background-image: url('/images/tag.png');*/
+  /*background-repeat: no-repeat;*/
+  padding-top: 1cm;
+  padding-left: 1cm;
+  margin-right: 1cm;
+  float: right;
+  width: 70%;
+  height: 1000px;
+
+}
+
