@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <title>永远年轻，永远热泪盈眶</title>
+  <link rel="stylesheet" th:href="@{/css/blog/blog.css}" href="/css/blog/blog.css">
+</head>
+<body>
+<div id="body-wrap">
+  <!--顶部导航栏，好看的背景图-->
+  <nav class="full-page" id="nav" style="height: 100%;">
+    <div class="nav-bg">
+    </div>
+    <div id="site-info" style="top:50%;">
+      <div id="site-title">
+        <span>有人相爱</span>
+      </div>
+      <div id="site-sub-title">
+        <span>有人夜里开车看海</span>
+      </div>
+    </div>
+  </nav>
+  <div id="content-outer">
+    <div class="layout-page" id="content-inner">
+      <div class="recent-posts" id="recent-posts">
+          <div class="recent-post-item article-container">
+            <div class="post-cover pull-left left-radius">
+              <a href="" title="哈哈哈"></a>
+            </div>
+            <div class="recenr-post-info" style="padding-top: 40px ;padding-bottom: 40px">
+              <a class="article-title" herf="" title="哈哈哈"></a>
+
+            </div>
+          </div>
+      </div>
+      <div class="aside-content" id="aside-content">
+        <div class="card-widget card-author">
+          <div class="card-content">
+            <div class="post-data">
+              <div class="post-data">
+                <div class="data-item is-center">
+                  <img class="avatar-img ls-is-cached lazyloaded"
+                       src="../../images/blog/anhsw.png">
+                  <p class="author-info--name is-center">且随意</p>
+                  <p class="author-info--description is-center">今日事,今日毕</p></div>
+              </div>
+            </div>
+            <div class="post-data data-config"></div>
+            <div class="post-data is-center"></div>
+            <div class="post-data data-config"></div>
+          </div>
+        </div>
+        <div class="card-widget card-announcement"></div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer"></footer>
+</div>
+
+<script type="text/javascript">
+
+  var winHeight = 0;
+
+  function findDimensions() { //函数：获取尺寸
+
+    //获取窗口高度
+    if (window.innerHeight) {
+      winHeight = window.innerHeight;
+    } else if ((document.body) && (document.body.clientHeight)) {
+      winHeight = document.body.clientHeight;
+    }
+    //通过深入Document内部对body进行检测，获取窗口大小
+    if (document.documentElement && document.documentElement.clientHeight) {
+      winHeight = document.documentElement.clientHeight;
+    }
+    //设置div的具体宽度=窗口的宽度的%
+    if (document.getElementById("nav")) {
+      document.getElementById("nav").style.height = winHeight + "px";
+    }
+    if (document.getElementById("site-info")) {
+      document.getElementById("site-info").style.top = winHeight / 2 + "px";
+    }
+  }
+
+  findDimensions();
+  window.onresize = findDimensions;
+</script>
+
+</body>
+</html>

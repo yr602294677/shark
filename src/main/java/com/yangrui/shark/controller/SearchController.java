@@ -26,7 +26,7 @@ public class SearchController {
     if("".equals(para)||""==para){
       map.put("查询结果","未输入查询内容，请输入关键词重新搜索！");
       model.addAttribute("map",map);
-      return "thymeleaf/search/everything";
+      return "thymeleaf/blog/blog";
     }
     String url = "https://api.ownthink.com/kg/knowledge";
     String param = "entity="+para;
@@ -37,7 +37,7 @@ public class SearchController {
     if(data.size()==0){
      map.put("查询结果","未查询到内容，请更换关键词重新搜索！");
       model.addAttribute("map",map);
-      return "thymeleaf/search/everything";
+      return "thymeleaf/blog/blog";
    }
     StringBuilder tempStr=new StringBuilder();
     String temp="";
@@ -55,6 +55,6 @@ public class SearchController {
       }
     }
     model.addAttribute("map",map);
-    return "thymeleaf/search/everything";
+    return "thymeleaf/blog/blog";
   }
 }

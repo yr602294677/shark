@@ -1,0 +1,125 @@
+body{
+  min-height: 100%;
+  position: relative;
+  display: flex;
+}
+#body-wrap{
+  position: relative;
+  -webkit-box-flex: 1;
+  flex: 1 auto;
+  display: flex;
+  -webkit-box-orient: vertical;
+  transition: all .3s;
+  flex-direction: column;
+}
+#nav {
+  position: relative;
+  margin-bottom: 1rem;
+}
+#nav .nav-bg{
+  background-image: url("../../images/blog/blog_head.png");
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-attachment:fixed;
+}
+#site-info {
+  position: absolute;
+  width: 100%;
+}
+#site-sub-title, #site-title {
+  color: #ffff33;
+  text-align: center;
+  font-size: 3rem;
+  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,.15);
+  line-height: 1.5;
+  font-family: Titillium Web,PingFang SC,Hiragino Sans GB,"Microsoft JhengHei","Microsoft YaHei",Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+.layout-page{
+  opacity:2;
+  filter:none;
+  display: flex;
+  margin:0 auto;
+  max-width: 1200px;
+  align-items: flex-start;
+  padding: 15px;
+}
+#content-outer {
+  -webkit-bo: 1;
+  flex: 1 auto;
+}
+/*
+左侧文章
+*/
+#recent-posts{
+  width:75%;
+}
+#recent-posts .recent-post-item{
+  box-shadow: 0 4px 8px 6px rgba(7,17,27,.06);
+  background: #fff;
+  margin-top: 20px;
+  height: 280px;
+}
+
+#aside-content{
+  width:25%;
+}
+  #aside-content .card-widget {
+    margin-left: 15px;
+    box-shadow: 0 4px 8px 6px rgba(7,17,27,.06);
+    border-radius: 8px;
+    transition: all .3s;
+    background: #fff;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+#aside-content.card-content {
+  padding: 1rem 1.2rem;
+}
+#aside-content .post-data {
+  display: flex;
+}
+#aside-content .data-item {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+  justify-content: center;
+}
+#aside-content .card-author .author-info--name {
+  font-size: 1.1rem;
+  display: block;
+  margin: -.1rem auto;
+  font-weight: 500;
+}
+#aside-content .card-author .author-info--description {
+  display: block;
+  margin: -.1rem auto;
+}
+.is-center {
+  text-align: center;
+}
+.avatar-img {
+  animation: avatar-turn-around 2s linear infinite;
+}
+.lazyloaded {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  -webkit-transition: opacity .3s;
+  -moz-transition: opacity .3s;
+  -o-transition: opacity .3s;
+  -ms-transition: opacity .3s;
+  transition: opacity .3s;
+}
+p {
+   display: block;
+   margin-block-start: 1em;
+   margin-block-end: 1em;
+   margin-inline-start: 0px;
+   margin-inline-end: 0px;
+ }
