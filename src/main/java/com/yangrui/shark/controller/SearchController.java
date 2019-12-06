@@ -6,6 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.yangrui.shark.utils.PostUtils;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping(value="/search")
 public class SearchController {
+
+  @Autowired
+  private StringRedisTemplate stringRedisTemplate;
+  @Autowired
+  private RedisTemplate redisTemplate;
+
 
   @RequestMapping("/showEverything")
   public String showEverything(Model model){
@@ -26,18 +36,25 @@ public class SearchController {
     if("".equals(para)||""==para){
       map.put("查询结果","未输入查询内容，请输入关键词重新搜索！");
       model.addAttribute("map",map);
-      return "thymeleaf/blog/blog";
+      return "thymeleaf/search/everything";
     }
     String url = "https://api.ownthink.com/kg/knowledge";
     String param = "entity="+para;
-    String result = PostUtils.dispachPackageDataByPostUrl(url,param);
-    System.out.println(result);
+    String result;
+    if(!"".equals(stringRedisTemplate.opsForValue().get(para))&&stringRedisTemplate.opsForValue().get(para)!=null){
+        result =stringRedisTemplate.opsForValue().get(para);
+      System.out.println("使用缓存，key为"+para);
+    }else{
+      result = PostUtils.dispachPackageDataByPostUrl(url,param);
+      stringRedisTemplate.opsForValue().set(para, result,30, TimeUnit.SECONDS);
+      System.out.println("新增缓存，key为"+para+"时效为30s");
+    }
     JSONObject jsonObject = JSON.parseObject(result);
     JSONObject data = JSON.parseObject(jsonObject.getString("data"));
     if(data.size()==0){
      map.put("查询结果","未查询到内容，请更换关键词重新搜索！");
       model.addAttribute("map",map);
-      return "thymeleaf/blog/blog";
+      return "thymeleaf/search/everything";
    }
     StringBuilder tempStr=new StringBuilder();
     String temp="";
@@ -55,6 +72,6 @@ public class SearchController {
       }
     }
     model.addAttribute("map",map);
-    return "thymeleaf/blog/blog";
+    return "thymeleaf/search/everything";
   }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/book.css}" href="css/book.css">
+</head>
+
+
+<body>
+  <header class="intro-header" >
+    <div id="signature">
+      <h1>杨锐</h1>
+      <span class="subheading">一念嗔心起 百万障门开</span>
+    </div>
+  </header>
+
+  <!--左侧内容-->
+  <div class="leftContext">
+    <div>
+      书籍信息展示页
+      <p>  <a href="details.html" th:href="@{http://www.qisuiyi.top}">杨锐|blog</a> </p>
+      <p>  <a href="details.html" th:href="@{/book/showBook}">书籍详情</a> </p>
+      <p>  <a href="details.html" th:href="@{/book/addBook}">录入书籍</a> </p>
+      <p>  <a href="details.html" th:href="@{/search/showEverything}">查询万物</a> </p>
+      <p>  <a href="details.html" th:href="@{/blog/showBlog}">永远年轻</a> </p>
+    </div>
+
+  </div>
+  <!--右侧内容-->
+  <div class="rightContext">
+    <div style="float: left;width: 50%;height: 100%">
+      <h3>已有书籍</h3>
+      <table width="600px" border="1" >
+        <col align="left"  width="15%"  />
+        <col align="left"  width="15%" />
+        <col align="left"  width="55%"  />
+        <col align="right" width="15%" />
+        <tr>
+          <th>书籍编号</th>
+          <th>书籍名称</th>
+          <th>书籍描述</th>
+          <th>借阅状态</th>
+        </tr>
+        <tr th:each="book:${bookList}">
+          <td><sapn  th:text="${book.id}" ></sapn></td>
+          <td><sapn  th:text="${book.name}"></sapn></td>
+          <td><sapn  th:text="${book.description}"></sapn></td>
+          <td><sapn  th:text="${book.state}"></sapn></td>
+        </tr>
+      </table>
+      <br><br>
+    </div>
+  </div>
+</body>
+</html>

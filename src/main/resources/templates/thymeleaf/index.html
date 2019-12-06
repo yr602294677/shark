@@ -1,70 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" th:href="@{/css/book.css}" href="css/book.css">
-  <style type="text/css">
-    /*header{*/
-    /*  background-image: url('/images/tag.png');*/
-    /*  background-position:center;*/
-    /*  background-attachment:fixed;*/
-    /*  width: 1088px;*/
-    /*  height: 506px;*/
-    /*}*/
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+    <title>Shark</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/layouts/side-menu.css" th:href="@{/css/layouts/side-menu.css}">
+    <script type="text/javascript" th:src="@{/js/ui.js}"></script>
+    <style type="text/css">
+
+        html{overflow:hidden;}
+
+
+    </style>
 </head>
-
-
 <body>
-<!--  <body background="/images/home.png">-->
-  <header class="intro-header" >
-    <div id="signature">
-      <h1>杨锐</h1>
-      <span class="subheading">一念嗔心起 百万障门开</span>
+
+<div id="layout">
+    <a href="#menu" id="menuLink" class="menu-link">
+        <span></span>
+    </a>
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="#">Shark</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item menu-item-divided pure-menu-selected">
+                    <a href="#" class="pure-menu-link" th:href="@{/system/showIndexDescription}" target="iframe1" id="index_btn">首页 </a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="#" class="pure-menu-link" th:href="@{http://www.qisuiyi.top}" target="iframe1">Whale</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="#"  class="pure-menu-link"  th:href="@{/search/showEverything}" target="iframe1">查询万物</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="#"  class="pure-menu-link"  th:href="@{/system/showBlogOfQiesuiyi}" target="iframe1">MyBlog</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="#"  class="pure-menu-link"  th:href="@{/system/showBlogOfPure}" target="iframe1">Pure博客模板</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </header>
-
-  <!--左侧内容-->
-  <div class="leftContext">
-    <div>
-      书籍信息展示页
-      <p>  <a href="details.html" th:href="@{http://www.qisuiyi.top}">杨锐|blog</a> </p>
-      <p>  <a href="details.html" th:href="@{/book/showBook}">书籍详情</a> </p>
-      <p>  <a href="details.html" th:href="@{/book/addBook}">录入书籍</a> </p>
-      <p>  <a href="details.html" th:href="@{/search/showEverything}">查询万物</a> </p>
-      <p>  <a href="details.html" th:href="@{/blog/showBlog}">永远年轻</a> </p>
+    <div id="main">
+        <iframe name="iframe1" id="iframe1" width="100%" height="1000px" >
+        </iframe>
     </div>
+</div>
+<script type="text/javascript">
 
-  </div>
-  <!--右侧内容-->
-  <div class="rightContext">
-    <div style="float: left;width: 50%;height: 100%">
-      <h3>已有书籍</h3>
-      <table width="600px" border="1" >
-        <col align="left"  width="15%"  />
-        <col align="left"  width="15%" />
-        <col align="left"  width="55%"  />
-        <col align="right" width="15%" />
-        <tr>
-          <th>书籍编号</th>
-          <th>书籍名称</th>
-          <th>书籍描述</th>
-          <th>借阅状态</th>
-        </tr>
-        <tr th:each="book:${bookList}">
-          <td><sapn  th:text="${book.id}" ></sapn></td>
-          <td><sapn  th:text="${book.name}"></sapn></td>
-          <td><sapn  th:text="${book.description}"></sapn></td>
-          <td><sapn  th:text="${book.state}"></sapn></td>
-        </tr>
-      </table>
-      <br><br>
-    </div>
-  </div>
-
-
-<!--<img src="/images/home.png" title="Logo de Good Thymes" alt="Logo de Good Thymes" />-->
+    window.onload= function load() {
+        document.getElementById("index_btn").click();
+    }
+</script>
 </body>
 </html>
