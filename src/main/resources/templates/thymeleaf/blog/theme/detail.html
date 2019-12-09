@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>博客预览</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+
+    <script src="/js/plugins/jquery/jquery.js"></script>
+
+    <script src="/js/blog/blog_list.js"></script>
+
+</head>
+<body>
+<div class="markdown-body">
+<!--    <th:block th:utext="${blogDetailVO.blog_content}"/>-->
+    <p th:utext="${blogDetailVO.blog_content}" ></p>
+</div>
+
+</body>
+</html>

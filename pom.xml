@@ -82,12 +82,7 @@
 			<version>1.2.59</version>
 			<scope>compile</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.data</groupId>-->
-<!--			<artifactId>spring-data-commons</artifactId>-->
-<!--			<version>2.1.10.RELEASE</version>-->
-<!--			<scope>compile</scope>-->
-<!--		</dependency>-->
+
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
@@ -102,6 +97,18 @@
 			<artifactId>commons-pool2</artifactId>
 		</dependency>
 
+		<!-- commonmark core -->
+		<dependency>
+			<groupId>com.atlassian.commonmark</groupId>
+			<artifactId>commonmark</artifactId>
+			<version>0.8.0</version>
+		</dependency>
+		<!-- commonmark table -->
+		<dependency>
+			<groupId>com.atlassian.commonmark</groupId>
+			<artifactId>commonmark-ext-gfm-tables</artifactId>
+			<version>0.8.0</version>
+		</dependency>
 	</dependencies>
 
 

@@ -1,5 +1,6 @@
 package com.yangrui.shark.blog.service.impl;
 
+import com.yangrui.shark.blog.data.BlogVO;
 import com.yangrui.shark.blog.mapper.BlogMapper;
 import com.yangrui.shark.blog.service.BlogService;
 import java.util.List;
@@ -21,5 +22,10 @@ public class BlogServiceImpl implements BlogService {
   @Override
   public List<Map<String, String>> getBlogList() {
     return  blogMapper.getBlogList();
+  }
+
+  @Override
+  public BlogVO getBlogDetail(String id) {
+    return blogMapper.getBlogDetail(id);
   }
 }
