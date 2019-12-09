@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yangrui.shark.blog.mapper.BlogMapper" >
+
+  <select id="saveBlog" parameterType="map" >
+      insert into blog (
+        `blog_id`,
+        `blog_title`,
+        `blog_author`,
+        `blog_content`
+
+      )
+      values
+        (
+          #{id},
+          #{blog_title},
+          #{blog_author},
+          #{blogContent}
+        )
+    </select>
+    <select id="getBlogList" resultType="java.util.HashMap" >
+        select  * from blog
+    </select>
+</mapper>

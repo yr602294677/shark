@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>编辑博客</title>
+</head>
+<!-- 引用Markdown编辑器必需 -->
+<link th:href="@{/js/plugins/editormd/css/editormd.css}" rel="stylesheet"/>
+<script src="/js/plugins/jquery/jquery.js"></script>
+<script src="/js/plugins/editormd/editormd.min.js"></script>
+<!-- 引用Pure模板 -->
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+
+<script src="/js/blog/blog_edit.js"></script>
+<body>
+<form class="pure-form">
+    <legend>编辑文章</legend>
+
+    <label >文章标题</label>
+    <input type="text" placeholder="文章标题" id="blog_title"  name="blog_title"  value="且随意的博客">
+
+    <label >作者</label>
+    <input type="text" placeholder="文章标题" id="blog_author" name="blog_author"  value="且随意">
+
+    <div id="editormd_content">
+      <textarea></textarea>
+    </div>
+    <button  type="button" id="confirmButton"  class="pure-button pure-button-primary">保存</button>
+</form>
+
+</body>
+</html>

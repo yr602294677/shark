@@ -1,0 +1,21 @@
+body{
+  width: auto;
+  height: auto;
+  background-position: center;
+  background-size: cover;
+  background-attachment:fixed;
+  text-align:center
+}
+.table_col{
+  width:1200px;
+  margin:0 auto;
+}
+.search{
+  margin:0 auto;
+}
+.search_condition{
+
+}
+.search_result{
+
+}

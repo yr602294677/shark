@@ -1,5 +1,6 @@
 package com.yangrui.shark.controller;
 
+import com.yangrui.shark.blog.service.BlogService;
 import com.yangrui.shark.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SystemController {
   @Autowired
   private BookService bookService;
+
+  @Autowired
+  private BlogService blogService;
 
   //首页
   @RequestMapping("/showIndex")
@@ -35,5 +39,8 @@ public class SystemController {
   public String showBlogOfQiesuiyi(Model model){
     return "thymeleaf/blog/blog";
   }
+  //markdown格式编辑博客
+  @RequestMapping("/editBlog")
+  public String editBlog(Model model){ return "thymeleaf/blog/blog_edit";}
 
 }
