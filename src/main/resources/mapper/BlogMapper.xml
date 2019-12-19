@@ -24,4 +24,7 @@
   <select id="getBlogDetail" resultType="com.yangrui.shark.blog.data.BlogVO" >
         select  * from blog where blog_id=#{id}
     </select>
+  <select id="findByUsername" resultType="com.yangrui.shark.data.User" >
+        select  * from user where username=#{username}
+    </select>
 </mapper>

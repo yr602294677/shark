@@ -20,8 +20,6 @@ public class SystemController {
   //首页
   @RequestMapping("/showIndex")
   public String showBook(ModelMap map){
-//    List<BookDO> bookList=bookService.listBooks();
-//    map.put("bookList",bookList);
     return "thymeleaf/index";
   }
   //首页 介绍信息页面
@@ -29,11 +27,7 @@ public class SystemController {
   public String showIndexDescription(ModelMap map){
     return "thymeleaf/system/description";
   }
-  //首页 博客菜单页面
-  @RequestMapping("/showBlogOfPure")
-  public String showBlogOfPure(Model model){
-    return "thymeleaf/blog/blog_pure";
-  }
+
   //首页 个人博客菜单页面
   @RequestMapping("/showBlogOfQiesuiyi")
   public String showBlogOfQiesuiyi(Model model){
