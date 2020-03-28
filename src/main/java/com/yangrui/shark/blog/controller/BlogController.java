@@ -33,12 +33,14 @@ public class BlogController {
     String blogContent = request.getParameter("blogContent");
     String blog_title = request.getParameter("blog_title");
     String blog_author = request.getParameter("blog_author");
-
+    Date date = new Date();
+    String create_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
     Map<String,String> paraMap=new HashMap();
     paraMap.put("id",getId());
     paraMap.put("blogContent",blogContent);
     paraMap.put("blog_title",blog_title);
     paraMap.put("blog_author",blog_author);
+    paraMap.put("create_time",create_time);
 
     blogService.saveBlog(paraMap);
     return "";
@@ -68,41 +70,24 @@ public class BlogController {
     return  "thymeleaf/blog/blog_list";
   }
 
-//  @RequestMapping("/priviewBlog")
-//  public String priviewBlog(@RequestParam("id") String id, HttpServletRequest request){
-//    BlogVO blogVO = blogService.getBlogDetail(id);
-//    if (blogVO != null) {
-//      request.setAttribute("blogDetailVO", blogVO);
-//      //request.setAttribute("commentPageResult", commentService.getCommentPageByBlogIdAndPageNum(blogId, commentPage));
-//    }
-//    request.setAttribute("pageName", "详情");
-//    //request.setAttribute("configurations", configService.getAllConfigs());
-//    return "thymeleaf/blog/theme/detail";
-//  }
   @RequestMapping("/priviewBlog")
   public String priviewBlog(@RequestParam("id") String id, Model model){
     BlogVO blogVO = blogService.getBlogDetail(id);
     if (blogVO != null) {
       model.addAttribute("blogDetailVO", blogVO);
       blogVO.setBlog_content(MarkDownUtil.mdToHtml(blogVO.getBlog_content()));
-      //request.setAttribute("commentPageResult", commentService.getCommentPageByBlogIdAndPageNum(blogId, commentPage));
     }
-
-    //request.setAttribute("configurations", configService.getAllConfigs());
     return "thymeleaf/blog/theme/detail";
   }
+
   /**
-   * 获取单篇博客信息
+   * 根据博客id删除单篇博客
    */
-//  @RequestMapping({"/blog/{blogId}"})
-//  public String detail(HttpServletRequest request, @PathVariable("blogId") Long blogId, @RequestParam(value = "commentPage", required = false, defaultValue = "1") Integer commentPage) {
-//    BlogVO blogVO = blogService.getBlogDetail(blogId);
-//    if (blogVO != null) {
-//      request.setAttribute("blogDetailVO", blogVO);
-//      //request.setAttribute("commentPageResult", commentService.getCommentPageByBlogIdAndPageNum(blogId, commentPage));
-//    }
-//    request.setAttribute("pageName", "详情");
-//    //request.setAttribute("configurations", configService.getAllConfigs());
-//    return "blog/theme/detail";
-//  }
+  @RequestMapping("/deleteBlogById")
+  public String deleteBlogById(@RequestParam("id") String id, Model model){
+    blogService.deleteBlogById(id);
+    List<Map<String,String>> blogList= blogService.getBlogList();
+    model.addAttribute("blog_list",blogList);
+    return "thymeleaf/blog/blog_list";
+  }
 }

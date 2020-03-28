@@ -2,24 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yangrui.shark.blog.mapper.BlogMapper" >
 
+
   <select id="saveBlog" parameterType="map" >
       insert into blog (
         `blog_id`,
         `blog_title`,
         `blog_author`,
-        `blog_content`
-
+        `blog_content`,
+        `create_time`
       )
       values
         (
           #{id},
           #{blog_title},
           #{blog_author},
-          #{blogContent}
+          #{blogContent},
+          #{create_time}
         )
     </select>
 <select id="getBlogList" resultType="java.util.HashMap" >
-        select  * from blog
+        select  * from blog where delete_flag ='0'
     </select>
   <select id="getBlogDetail" resultType="com.yangrui.shark.blog.data.BlogVO" >
         select  * from blog where blog_id=#{id}
@@ -27,4 +29,7 @@
   <select id="findByUsername" resultType="com.yangrui.shark.data.User" >
         select  * from user where username=#{username}
     </select>
+  <update id="deleteBlogById">
+    update blog set delete_flag = '1' where  blog_id = #{id}
+  </update>
 </mapper>

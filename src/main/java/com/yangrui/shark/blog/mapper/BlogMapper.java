@@ -18,4 +18,6 @@ public interface BlogMapper {
   BlogVO getBlogDetail(String blogId);
 
   User findByUsername(String username);
+
+  void deleteBlogById(String id);
 }

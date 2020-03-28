@@ -21,11 +21,17 @@ public class BlogServiceImpl implements BlogService {
 
   @Override
   public List<Map<String, String>> getBlogList() {
-    return  blogMapper.getBlogList();
+
+    return blogMapper.getBlogList();
   }
 
   @Override
   public BlogVO getBlogDetail(String id) {
     return blogMapper.getBlogDetail(id);
+  }
+
+  @Override
+  public void deleteBlogById(String id) {
+    blogMapper.deleteBlogById(id);
   }
 }

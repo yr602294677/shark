@@ -11,4 +11,6 @@ public interface BlogService {
   List<Map<String, String>> getBlogList();
 
   BlogVO getBlogDetail(String blogId);
+
+  void deleteBlogById(String id);
 }

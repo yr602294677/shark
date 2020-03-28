@@ -17,12 +17,6 @@ function  saveBlog(){
   var blogContent = editorContent.getMarkdown();
   var blog_title = $("#blog_title").val();
   var blog_author = $("#blog_author").val();
-
-
-  // var blog_title = document.getElementById("blog_title").value;
-  // var blog_author = document.getElementById("blog_author").value;
-  // alert(blog_title+"    "+blog_author );
-
   $.ajax({
     url :  "/blog/saveBlog",
     type : "post",
@@ -34,7 +28,12 @@ function  saveBlog(){
     async : false,
     success : function(result) {
       alert("保存博客成功");
+      showBlogList();
     }
-
   });
+}
+
+function showBlogList(){
+    window.location = '/blog/showBlogList';
+
 }
