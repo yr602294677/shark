@@ -14,10 +14,10 @@
       values
         (
           #{id},
-          #{blog_title},
-          #{blog_author},
+          #{blogTitle},
+          #{blogAuthor},
           #{blogContent},
-          #{create_time}
+          #{createTime}
         )
     </select>
 <select id="getBlogList" resultType="java.util.HashMap" >

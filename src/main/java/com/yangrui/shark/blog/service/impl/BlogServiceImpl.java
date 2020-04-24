@@ -5,14 +5,19 @@ import com.yangrui.shark.blog.mapper.BlogMapper;
 import com.yangrui.shark.blog.service.BlogService;
 import java.util.List;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+/**
+ * @author qiesuiyi
+ * 博客功能
+ */
 @Service("blogService")
 public class BlogServiceImpl implements BlogService {
 
-  @Autowired
-  private BlogMapper blogMapper;
+  private final BlogMapper blogMapper;
+
+  public BlogServiceImpl(BlogMapper blogMapper) {
+    this.blogMapper = blogMapper;
+  }
 
   @Override
   public void saveBlog(Map<String, String> paraMap) {
