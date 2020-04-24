@@ -33,7 +33,7 @@ public class SearchController {
   @RequestMapping("/serarchEverything")
   public String serarchEverything(@RequestParam("para") String para, Model model){
     Map map=new HashMap();
-    if("".equals(para)||""==para){
+    if("".equals(para)){
       map.put("查询结果","未输入查询内容，请输入关键词重新搜索！");
       model.addAttribute("map",map);
       return "thymeleaf/search/everything";
