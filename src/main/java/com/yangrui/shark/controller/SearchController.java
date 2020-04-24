@@ -24,7 +24,7 @@ public class SearchController {
   @Autowired
   private RedisTemplate redisTemplate;
 
-
+//dev标志
   @RequestMapping("/showEverything")
   public String showEverything(Model model){
     return "thymeleaf/search/everything";
