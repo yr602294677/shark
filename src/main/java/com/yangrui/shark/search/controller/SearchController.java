@@ -1,4 +1,4 @@
-package com.yangrui.shark.controller;
+package com.yangrui.shark.search.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -24,7 +24,6 @@ public class SearchController {
   @Autowired
   private RedisTemplate redisTemplate;
 
-//dev标志
   @RequestMapping("/showEverything")
   public String showEverything(Model model){
     return "thymeleaf/search/everything";
