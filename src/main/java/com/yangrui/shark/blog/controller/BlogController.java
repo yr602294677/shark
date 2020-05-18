@@ -29,6 +29,9 @@ public class BlogController {
     this.blogService = blogService;
   }
 
+  //markdown格式编辑博客，新进入新增页面
+  @RequestMapping("/addBlog")
+  public String addBlog(Model model){ return "thymeleaf/blog/blog_add";}
   /**
    * 新增博客信息
    */
@@ -80,6 +83,8 @@ public class BlogController {
 
   @RequestMapping("/priviewBlog")
   public String priviewBlog(@RequestParam("id") String id, Model model) {
+    //修改博客热度值
+    blogService.changeBlogHeatById(id);
     BlogVO blogVO = blogService.getBlogDetail(id);
     if (blogVO != null) {
       model.addAttribute("blogDetailVO", blogVO);
@@ -97,5 +102,42 @@ public class BlogController {
     List<Map<String, String>> blogList = blogService.getBlogList();
     model.addAttribute("blog_list", blogList);
     return "thymeleaf/blog/blog_list";
+  }
+
+  //用于测试postman
+  @RequestMapping("/getNum")
+  @ResponseBody
+  public int getNum() {
+    System.out.println("kaishi chuli");
+    return 0;
+  }
+
+  //博客编辑页面
+  @RequestMapping("/editBlog")
+  public String editBlog(@RequestParam("id") String id, Model model) {
+    model.addAttribute("blog_id",id);
+    BlogVO blogVO = blogService.getBlogDetail(id);
+    if (blogVO != null) {
+      model.addAttribute("blogDetailVO", blogVO);
+    }
+    return "thymeleaf/blog/blog_edit";
+  }
+  /**
+   * 修改博客信息
+   */
+  @RequestMapping(value = "/updateBlog", method = RequestMethod.POST)
+  @ResponseBody
+  public String updateBlog(HttpServletRequest request) {
+    String blogContent = request.getParameter("blogContent");
+    String blogTitle = request.getParameter("blog_title");
+    String blogAuthor = request.getParameter("blog_author");
+    String blogId = request.getParameter("blog_id");
+    Map<String, String> paraMap = new HashMap(16);
+    paraMap.put("id", blogId);
+    paraMap.put("blogContent", blogContent);
+    paraMap.put("blogTitle", blogTitle);
+    paraMap.put("blogAuthor", blogAuthor);
+    blogService.updateBlog(paraMap);
+    return "";
   }
 }

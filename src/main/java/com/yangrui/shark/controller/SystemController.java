@@ -29,8 +29,6 @@ public class SystemController {
   public String showBlogOfQiesuiyi(Model model){
     return "thymeleaf/blog/blog";
   }
-  //markdown格式编辑博客
-  @RequestMapping("/editBlog")
-  public String editBlog(Model model){ return "thymeleaf/blog/blog_edit";}
+
 
 }
