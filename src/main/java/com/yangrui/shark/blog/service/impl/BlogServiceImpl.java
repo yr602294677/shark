@@ -39,4 +39,14 @@ public class BlogServiceImpl implements BlogService {
   public void deleteBlogById(String id) {
     blogMapper.deleteBlogById(id);
   }
+
+  @Override
+  public void changeBlogHeatById(String id) {
+    blogMapper.changeBlogHeatById(id);
+  }
+
+  @Override
+  public void updateBlog(Map<String, String> paraMap) {
+    blogMapper.updateBlog(paraMap);
+  }
 }

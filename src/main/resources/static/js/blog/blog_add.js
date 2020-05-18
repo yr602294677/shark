@@ -9,36 +9,31 @@ $(function() {
     path: "/js/plugins/editormd/lib/",
     saveHTMLToTextarea: true
   });
-  $("#updateButton").bind("click", updateBlog);
+  $("#confirmButton").bind("click", saveBlog);
 
 });
 
-function  updateBlog(){
+function  saveBlog(){
   var blogContent = editorContent.getMarkdown();
   var blog_title = $("#blog_title").val();
   var blog_author = $("#blog_author").val();
-  var blog_id=$("#blog_id").val();
-  alert(blog_id);
-
   $.ajax({
-    url :  "/blog/updateBlog",
+    url :  "/blog/saveBlog",
     type : "post",
     data : {
       "blogContent":blogContent,
       "blog_title":blog_title,
       "blog_author":blog_author,
-      "blog_id":blog_id,
-
     },
     async : false,
     success : function(result) {
-      alert("修改博客成功");
+      alert("保存博客成功");
       showBlogList();
     }
   });
 }
 
 function showBlogList(){
-  window.location = '/blog/showBlogList';
+    window.location = '/blog/showBlogList';
 
 }

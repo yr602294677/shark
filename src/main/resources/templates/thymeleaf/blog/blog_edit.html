@@ -14,18 +14,22 @@
 <script src="/js/blog/blog_edit.js"></script>
 <body>
 <form class="pure-form">
-    <legend>编辑文章</legend>
+  <legend>编辑文章</legend>
+  <!--hidden="hidden"-->
+  <input type="text"  id="blog_id"   name="blog_id"   th:value="${blog_id}">
 
-    <label >文章标题</label>
-    <input type="text" placeholder="文章标题" id="blog_title"  name="blog_title"  value="且随意的博客">
+  <label >文章标题</label>
+  <input type="text" placeholder="文章标题" id="blog_title"  name="blog_title"   th:value="${blogDetailVO.blog_title}">
 
-    <label >作者</label>
-    <input type="text" placeholder="文章标题" id="blog_author" name="blog_author"  value="且随意">
+  <label >作者</label>
+  <input type="text" placeholder="文章标题" id="blog_author" name="blog_author"   th:value="${blogDetailVO.blog_author}">
 
-    <div id="editormd_content">
-      <textarea></textarea>
-    </div>
-    <button  type="button" id="confirmButton"  class="pure-button pure-button-primary">保存</button>
+  <div id="editormd_content">
+    <textarea th:text="${blogDetailVO.blog_content}">
+
+    </textarea>
+  </div>
+  <button  type="button" id="updateButton"  class="pure-button pure-button-primary">保存</button>
 </form>
 
 </body>

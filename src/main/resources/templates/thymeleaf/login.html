@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/bulma.css" th:href="@{/css/bulma.css}">
 <style>
   body{
-    background-image: url(https://docs-1255840532.cos.ap-shanghai.myqcloud.com/3968.jpg);
+    background-image: url(https://images.pexels.com/photos/3777916/pexels-photo-3777916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -28,6 +28,7 @@
   .login_button {
 
     width: 100%;
+    top: 80px;
   }
 
 </style>
@@ -37,9 +38,9 @@
   <form class="login_form" th:action="@{/login}" method="post">
     <h3 class="title is-3" style="margin: 0 auto 30px auto;"> Shark</h3>
     <div class="field is-horizontal">
-      <div class="field-label is-normal">
+      <!--<div class="field-label is-normal">
         <label class="label">用户名</label>
-      </div>
+      </div>-->
       <div class="field-body">
         <div class="field">
           <p class="control">
@@ -49,9 +50,6 @@
       </div>
     </div>
     <div class="field is-horizontal">
-      <div class="field-label is-normal">
-        <label class="label">密码</label>
-      </div>
       <div class="field-body">
         <div class="field">
           <p class="control">

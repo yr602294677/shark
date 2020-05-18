@@ -16,4 +16,8 @@ public interface BlogService {
   BlogVO getBlogDetail(String blogId);
 
   void deleteBlogById(String id);
+
+  void changeBlogHeatById(String id);
+
+  void updateBlog(Map<String, String> paraMap);
 }

@@ -21,6 +21,17 @@ public class BlogVO {
   @Column(name = "create_time")
   private String create_time;
 
+  //热度，即点击次数
+  @Column(name = "blog_heat")
+  private Integer blog_heat;
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public String getBlog_title() {
     return blog_title;
@@ -54,4 +65,11 @@ public class BlogVO {
     this.create_time = create_time;
   }
 
+  public Integer getBlog_heat() {
+    return blog_heat;
+  }
+
+  public void setBlog_heat(Integer blog_heat) {
+    this.blog_heat = blog_heat;
+  }
 }

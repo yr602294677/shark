@@ -1,4 +1,4 @@
-package com.yangrui.shark.controller;
+package com.yangrui.shark.search.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -23,7 +23,6 @@ public class SearchController {
   private StringRedisTemplate stringRedisTemplate;
   @Autowired
   private RedisTemplate redisTemplate;
-
 
   @RequestMapping("/showEverything")
   public String showEverything(Model model){
