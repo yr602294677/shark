@@ -58,6 +58,18 @@ public class BlogController {
     return new SimpleDateFormat("yyyyMMddHHmmssSSS").format(testdate);
   }
 
+  public static void main(String[] args) {
+
+    Map map=new HashMap();
+    map.put("a","aaaa");
+    if (null!=map.get("b")) {
+      System.out.println("取数成功");
+    }else{
+      System.out.println("取数失败");
+    }
+
+  }
+
   /**
    * 展示博客列表
    *

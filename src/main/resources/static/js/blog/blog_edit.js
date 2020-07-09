@@ -18,7 +18,6 @@ function  updateBlog(){
   var blog_title = $("#blog_title").val();
   var blog_author = $("#blog_author").val();
   var blog_id=$("#blog_id").val();
-  alert(blog_id);
 
   $.ajax({
     url :  "/blog/updateBlog",
