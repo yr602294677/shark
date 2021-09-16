@@ -5,12 +5,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="css/bulma.css" th:href="@{/css/bulma.css}">
 <style>
+  html{
+    height: 100%;
+    overflow-y: hidden;
+  }
   body{
     background-image: url(https://images.pexels.com/photos/3777916/pexels-photo-3777916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height:2000px;
+    height:100%;
   }
   .login_form{
     background: #fff;
@@ -23,14 +27,16 @@
     top:30%;
     margin:0 auto;
     width: 25%;
-    height: 40%;
+    height: 36%;
   }
   .login_button {
 
     width: 100%;
-    top: 80px;
+    margin-top: 5px;
   }
-
+  #verifyCode{
+    width:60%;
+  }
 </style>
 </head>
 <body>
@@ -38,9 +44,6 @@
   <form class="login_form" th:action="@{/login}" method="post">
     <h3 class="title is-3" style="margin: 0 auto 30px auto;"> Shark</h3>
     <div class="field is-horizontal">
-      <!--<div class="field-label is-normal">
-        <label class="label">用户名</label>
-      </div>-->
       <div class="field-body">
         <div class="field">
           <p class="control">
@@ -59,11 +62,37 @@
       </div>
     </div>
     <div th:if="${param.error}">
-      <p style="text-align: center" class="text-danger">登录失败，账号或密码错误!</p>
+     <p style="text-align: center" class="text-danger">登录失败，账号或密码错误!</p>
+<!--
+      <span th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}" class="help-block" style="color:red;"></span>
+-->
     </div>
+    <!--<div th:if="${param.code}">
+      <p style="text-align: center" class="text-danger">登录失败，验证码错误!</p>
+    </div>-->
     <div th:if="${result}">
       <p style="text-align: center" class="text-success" th:text="${result}"></p>
     </div>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <input type="text" class="input" id="verifyCode" placeholder="请输入验证码" required="true">
+            <img alt="单击图片刷新！" class="pointer" th:src="@{/common/kaptcha}"
+                 onclick="this.src='/common/kaptcha?d='+new Date()*1">
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--<div class="row">
+      <div class="col-6">
+        <input type="text" class="form-control" name="verifyCode" placeholder="请输入验证码" required="true">
+      </div>
+      <div class="col-6">
+        <img alt="单击图片刷新！" class="pointer" th:src="@{/common/kaptcha}"
+             onclick="this.src='/common/kaptcha?d='+new Date()*1">
+      </div>
+    </div>-->
       <button class="button is-link is-rounded login_button" type="submit">登陆</button>
   </form>
 </div>
