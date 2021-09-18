@@ -19,8 +19,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     BackdoorAuthenticationProvider backdoorAuthenticationProvider;
+
     @Autowired
     MyUserDetailsService myUserDetailsService;
+    @Autowired
+    private CustomAuthenticationDetailsSource authenticationDetailsSource;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         /**
@@ -35,6 +38,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser("admin").password(new BCryptPasswordEncoder().encode("pwd")).roles("USER","ADMIN");
         //将自定义验证类注册进去
         auth.authenticationProvider(backdoorAuthenticationProvider);
+
+
         //加入数据库验证类，下面的语句实际上在验证链中加入了一个DaoAuthenticationProvider
         auth.userDetailsService(myUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
@@ -55,7 +60,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**","/").hasRole("USER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/user")
+                .formLogin().authenticationDetailsSource(authenticationDetailsSource)
+                .loginPage("/login").defaultSuccessUrl("/user")
                 //1.自定义参数名称，与login.html中的参数对应
                 .usernameParameter("myusername").passwordParameter("mypassword")
                 .and()

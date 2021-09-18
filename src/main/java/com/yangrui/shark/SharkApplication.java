@@ -16,11 +16,11 @@ public class SharkApplication extends SpringBootServletInitializer {
   public static void main(String[] args) {
 
     SpringApplication.run(SharkApplication.class, args);
-    logger.trace("这是trace日志");
+/*    logger.trace("这是trace日志");
     logger.debug("这个debug日志");
     logger.info("这个info日志");
     logger.warn("这是warn日志");
-    logger.error("这是error日志");
+    logger.error("这是error日志");*/
     logger.error("启动成功");
   }
 	@Override
